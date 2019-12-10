@@ -15,10 +15,14 @@ class MoviesServices {
 
     configureAxios(baseURL, headers = {}) {
         axios.defaults.baseURL = baseURL
-        Object.assign {
+        Object.assign(
             axios.defaults.headers.common,
             headers
-        }
+        )
+    }
+
+    getAll() {
+        return axios.get('/movies')
     }
 }
 
