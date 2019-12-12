@@ -5,17 +5,21 @@
             type="text" 
             placeholder="Search" 
             aria-label="Search"
-            @input="setSearchTerm($event.target.value)"  
+            @input="setSearchTerm({term: $event.target.value})"  
         />
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
     </form>
 </template>
 <script>
+import {mapMutations} from 'vuex'
 export default {
     methods: {
-        setSearchTerm(term) {
-            this.$store.commit('setSearchTerm', { term } );
-        }
+        ...mapMutations({
+            setSearchTerm: 'setSearchTerm'
+        })
+        // setSearchTerm(term) {
+        //     this.$store.commit('setSearchTerm', { term } );
+        // }
     }
 }
 </script>

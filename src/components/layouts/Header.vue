@@ -20,6 +20,9 @@
             </li>
         </ul>
         <MoviesSearch/>
+        <li class="nav-item" v-if="isUserAuthenticated">
+          <button class="btn btn-outline-danger my-2 my-sm-0" @click="onLogout">Logout</button>
+        </li>
         </div>
     </nav>
     </header>
@@ -27,11 +30,29 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
 import MoviesSearch from './../MoviesSearch'
 
 export default {
   components: {
     MoviesSearch
+  },
+  computed: {
+    ...mapGetters({
+      isUserAuthenticated: 'isUserAuthenticated'
+    })
+  },
+  methods: {
+    ...mapActions({
+      logout: 'logout'
+    }),
+    onLogout() {
+      this.logout()
+      this.$router.push({
+        name: 'login'
+      })
+    }
+
   }
 }
 </script>
