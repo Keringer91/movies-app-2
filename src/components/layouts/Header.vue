@@ -19,6 +19,7 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
         </ul>
+        <MoviesSearch/>
         </div>
     </nav>
     </header>
@@ -26,7 +27,13 @@
 </template>
 
 <script>
+import MoviesSearch from './../MoviesSearch'
 
+export default {
+  components: {
+    MoviesSearch
+  }
+}
 </script>
 
 <style>
